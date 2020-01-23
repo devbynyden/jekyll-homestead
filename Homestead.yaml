@@ -1,0 +1,35 @@
+---
+ip: "192.168.15.15"
+memory: 2048
+cpus: 2
+provider: virtualbox
+hostname: homestead.box
+
+authorize: ~/.ssh/id_rsa.pub
+
+keys:
+    - ~/.ssh/id_rsa
+
+folders:
+    - map: ~\homestead\playground
+      to: /home/vagrant/playground
+
+sites:
+    - map: homestead.bn
+      to: /home/vagrant/playground/public_html
+    - map: homestead.test
+      to: /home/vagrant/playground/test_html
+      
+features:
+    - mariadb: false
+    - ohmyzsh: false
+    - webdriver: false
+    - python: true
+    - ruby: true
+    - jekyll: true
+    
+ports:
+    - send: 4000
+      to: 4000
+    - send: 8080
+      to: 8080
